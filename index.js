@@ -1,17 +1,44 @@
-import fetch from "node-fetch";
+const api_url = 'https://pokeapi.co/api/v2/pokemon/';
 
-fetch('https://pokeapi.co/api/v2/pokemon/5')
-    .then((response) => response.json())
-    .then((data) => parse_data(data));
+let index = 2;
+
+const left = document.getElementById("left");
+const right = document.getElementById("right");
+const moves = document.getElementById("moves");
+const pname = document.getElementById("name");
+const info = document.getElementById("info");
+let image = "need to find the right element for image";
+
+get_prev_pokemon();
+
+left.addEventListener("click", () => get_prev_pokemon());
+right.addEventListener("click", () => get_next_pokemon());
+
+function get_next_pokemon() {
+    index++;
+    console.log(index);
+    fetch(api_url + index)
+        .then((response) => response.json())
+        .then((data) => parse_data(data));
+}
+
+function get_prev_pokemon() {
+    if (index > 1) {
+        index--;
+        console.log(index);
+        fetch(api_url + index)
+            .then((response) => response.json())
+            .then((data) => parse_data(data));
+    }
+}
+
 
 function parse_data(data) {
-    console.log(data.name);
-    console.log('INFO');
-    const info = create_info(data.height, data.weight, data.stats);
-    const moves = create_moves(data.moves);
-    console.log(info);
-    console.log("move");
-    console.log(moves);
+    console.log(data);
+    image = data["sprites"]['back_default'];
+    pname.textContent = data.name;
+    info.textContent = create_info(data.height, data.weight, data.stats);
+    moves.textContent = create_moves(data.moves);
 }
 
 function create_info(height, weight, stats) {
