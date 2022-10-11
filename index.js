@@ -11,9 +11,10 @@ const type2 = document.getElementById("type2");
 const info_b = document.getElementById("info_b");
 const moves_b = document.getElementById("moves_b");
 const image = document.getElementById("im_id");
+const inflabel = document.getElementById("inf-label");
 
-info_b.style.backgroundColor = "green";
-moves_b.style.backgroundColor = "gray";
+info_b.style.backgroundColor = "'#7CFF79'";
+moves_b.style.backgroundColor = "#E8E8E8";
 
 let infoNmoves = {
     'info':'',
@@ -65,19 +66,21 @@ function get_prev_pokemon() {
 }
 
 function get_info() {
-    info_b.style.backgroundColor = "green";
+    info_b.style.backgroundColor = '#7CFF79';
     disp_box.textContent = infoNmoves['info'];
-    moves_b.style.backgroundColor = "gray";
+    moves_b.style.backgroundColor = "#E8E8E8";
+    inflabel.textContent = "Info";
 }
 
 function get_moves() {
-    info_b.style.backgroundColor = "gray";
+    info_b.style.backgroundColor = "#E8E8E8";
     disp_box.textContent = infoNmoves['moves'];
-    moves_b.style.backgroundColor = "green";
+    moves_b.style.backgroundColor = "#7CFF79";
+    inflabel.textContent = "Moves";
 }
 
 function set_disp_box() {
-    if (moves_b.style.backgroundColor === "green") {
+    if (moves_b.style.backgroundColor === "'#7CFF79'") {
         disp_box.textContent = infoNmoves['moves'];
     } else {
         disp_box.textContent = infoNmoves['info']
@@ -97,18 +100,22 @@ function parse_data(data) {
 function create_info(height, weight, stats) {
     height *= .1;
     weight *= 1.0;
-    let info = "height: " + height.toFixed(1) + "m";
-    info += "\nweight: " + weight.toFixed(1) + "kg";
+    let info = "height:" + height.toFixed(1) + "m";
+    info += " weight:" + weight.toFixed(1) + "kg";
     for (let i = 0; i < stats.length; i++) {
-        info += "\n" + stats[i].stat.name + ": " + stats[i].base_stat;
+        info += "\n" + stats[i].stat.name + ":" + stats[i].base_stat;
     }
     return info;
 }
 
 function create_moves(moves) {
-    let moveList = moves[0].move.name;
-    for (let i = 1; i < moves.length; i++) {
-        moveList += "\n"+ moves[i].move.name;
+    let moveList = [];
+    let limit = 10;
+    if (moves.length < limit) {
+        limit = moves.length;
+    }
+    for (let i = 0; i < limit; i++) {
+        moveList.push(moves[i].move.name);
     }
     return moveList;
 }

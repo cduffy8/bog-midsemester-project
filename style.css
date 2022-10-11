@@ -61,7 +61,11 @@ img {
     display: flex;
     background-color: gainsboro;
     width: 50%;
-    height: 50%;
+    height: 65%;
+    padding: 2%;
+    font-size: 36px;
+    font-weight: 400;
+    overflow: hidden;
 }
 
 #type-label {
@@ -140,3 +144,22 @@ img {
     margin-bottom: 2%;
 }
 
+#inf-label {
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 2%;
+}
+
+#info_b {
+    margin-top: 7%;
+    font-size: 36px;
+    font-weight: 400;
+    background-color: #7CFF79;
+}
+
+#moves_b {
+    margin-top: 7%;
+    font-size: 36px;
+    font-weight: 400;
+    background-color: #E8E8E8;
+}
