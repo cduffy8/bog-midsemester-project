@@ -9,11 +9,11 @@ const disp_box = document.getElementById("disp_box");
 const type = document.getElementById("type");
 const info_b = document.getElementById("info_b");
 const moves_b = document.getElementById("moves_b");
+const image = document.getElementById("im_id");
 
 info_b.style.backgroundColor = "green";
 moves_b.style.backgroundColor = "gray";
 
-let image = "need to find the right element for image";
 let infoNmoves = {
     'info':'',
     'moves':'' 
@@ -63,7 +63,8 @@ function set_disp_box() {
 }
 
 function parse_data(data) {
-    image = data["sprites"]['back_default'];
+    console.log(data["sprites"]['other']['official-artwork']['front_default']);
+    image.src = data["sprites"]['other']['official-artwork']['front_default'];
     pname.textContent = data.name;
     infoNmoves['info'] = create_info(data.height, data.weight, data.stats);
     infoNmoves['moves'] = create_moves(data.moves);

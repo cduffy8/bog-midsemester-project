@@ -2,25 +2,46 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://rsms.me/">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     </head>
     <body>
-        <h1>Bog Mid-Semester Project</h1>
+        <div id="main">
+            <div class="nText" id="title">Bits of Good Mid-Semester Project</div>
 
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png">
+            <div id="main-content">
 
-        <div id="name"></div>
-        <p></p>
-        <div id="type"></div>
-        <p></p>
-        <button id="left">Left</button>
-        <button id="right">Right</button>
+                <div id="left-col">
 
-        <p></p>
-        <div id="disp_box"></div>
-        <button id="info_b">Info</button>
-        <button id="moves_b">Moves</button>
+                    <img id="im_id" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png">
+                    
+                    <div id="name"></div>
 
+                    <div class="nText">Type:</div>
 
+                    <div id="type"></div>
+
+                    <div id="toggles">
+                        <button id="left">Left</button>
+                        <button id="right">Right</button>
+                    </div>
+
+                </div>
+
+                <div id="right-col">
+
+                    <div id="disp_box"></div>
+
+                    <div id="toggles">
+                        <button id="info_b">Info</button>
+                        <button id="moves_b">Moves</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        
         <script type="text/javascript" src="index.js"></script>
     </body>
 
