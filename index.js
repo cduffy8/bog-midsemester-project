@@ -6,7 +6,8 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 const pname = document.getElementById("name");
 const disp_box = document.getElementById("disp_box");
-const type = document.getElementById("type");
+const type1 = document.getElementById("type1");
+const type2 = document.getElementById("type2");
 const info_b = document.getElementById("info_b");
 const moves_b = document.getElementById("moves_b");
 const image = document.getElementById("im_id");
@@ -17,6 +18,27 @@ moves_b.style.backgroundColor = "gray";
 let infoNmoves = {
     'info':'',
     'moves':'' 
+};
+
+const type2color = {
+    "normal": "#A8A77A",
+    "fire": "#EE8130",
+    "water" : "#6390F0",
+    "electric" : "#F7D02C",
+    "grass" : "#7AC74C",
+    "ice" : "#96D9D6",
+    "fighting" : "#C22E28",
+    "poison" : "#A33EA1",
+    "ground" : '#E2BF65',
+    'flying' : '#A98FF3',
+    "psychic" : "#F95587",
+    'bug' : "#A6B91A",
+    'rock' : "#B6A136",
+    'ghost' : "#735797",
+    'dragon' : "#6F35FC",
+    'dark' : "#705746",
+    'steel' : "#B7B7CE",
+    'fairy' : '#D685AD'
 };
 
 get_prev_pokemon();
@@ -69,7 +91,7 @@ function parse_data(data) {
     infoNmoves['info'] = create_info(data.height, data.weight, data.stats);
     infoNmoves['moves'] = create_moves(data.moves);
     set_disp_box();
-    type.textContent = create_types(data['types']);
+    create_types(data['types']);
 }
 
 function create_info(height, weight, stats) {
@@ -92,9 +114,13 @@ function create_moves(moves) {
 }
 
 function create_types(types) {
-    let typeStr = types[0]['type']['name'];
+    type1.textContent = types[0]['type']['name'];
+    type1.style.backgroundColor = type2color[types[0]['type']['name']];
     if (types.length > 1) {
-        typeStr += " " + types[1]['type']['name'];
+        type2.textContent = types[1]['type']['name'];
+        type2.style.backgroundColor = type2color[types[1]['type']['name']];
+    } else {
+        type2.textContent = "";
+        type2.style.backgroundColor = "white";
     }
-    return typeStr;
 }

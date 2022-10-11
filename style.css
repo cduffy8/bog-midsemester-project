@@ -9,15 +9,17 @@
     display: flex;
     justify-content: center;
     margin-top: 2%;
+    margin-bottom: 2%;
     font-size: 64px;
     font-weight: 700;
 }
 
 img {
-    max-width: 100%; 
     height: auto;
+    width: 40%;
     border-color: black;
     border-width: 4px;
+    border: solid;
 }
 
 .nText {
@@ -40,12 +42,14 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
 }
 
 #right-col {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
 }
 
 #toggles {
@@ -56,6 +60,83 @@ img {
 #disp_box {
     display: flex;
     background-color: gainsboro;
-    width: 60%;
-    height: 60%;
+    width: 50%;
+    height: 50%;
 }
+
+#type-label {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#type-box {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: auto;
+}
+
+#name {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8E8E8;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    width: 40%;
+    height: 70px;
+    border-radius: 5px;
+    margin: 3%;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.btn {
+    background-color: #E8E8E8;
+    border-radius: 5px;
+    font-size: 61px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 35%;
+    height: 70%;
+}
+
+#toggles {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    height: auto;
+    margin: 3%;
+}
+
+#type-subbox {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+#type1 {
+    display: flex;
+    border-radius: 10px;
+    background-color: gray;
+    width: 20%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#type2 {
+    display: flex;
+    border-radius: 10px;
+    background-color: gray;
+    width:20%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
