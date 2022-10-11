@@ -60,9 +60,8 @@ img {
 #disp_box {
     display: flex;
     background-color: gainsboro;
-    width: 50%;
-    height: 65%;
-    padding: 2%;
+    width: 55%;
+    height: 80%;
     font-size: 36px;
     font-weight: 400;
     overflow: hidden;
@@ -162,4 +161,9 @@ img {
     font-size: 36px;
     font-weight: 400;
     background-color: #E8E8E8;
+}
+
+#textrows {
+    list-style-type: none;
+    font: "Inter";
 }

@@ -12,8 +12,9 @@ const info_b = document.getElementById("info_b");
 const moves_b = document.getElementById("moves_b");
 const image = document.getElementById("im_id");
 const inflabel = document.getElementById("inf-label");
+const textlist = document.getElementById("textrows");
 
-info_b.style.backgroundColor = "'#7CFF79'";
+info_b.style.backgroundColor = "#7CFF79";
 moves_b.style.backgroundColor = "#E8E8E8";
 
 let infoNmoves = {
@@ -67,28 +68,31 @@ function get_prev_pokemon() {
 
 function get_info() {
     info_b.style.backgroundColor = '#7CFF79';
-    disp_box.textContent = infoNmoves['info'];
     moves_b.style.backgroundColor = "#E8E8E8";
     inflabel.textContent = "Info";
+    set_disp_box();
 }
 
 function get_moves() {
     info_b.style.backgroundColor = "#E8E8E8";
-    disp_box.textContent = infoNmoves['moves'];
     moves_b.style.backgroundColor = "#7CFF79";
     inflabel.textContent = "Moves";
+    set_disp_box();
 }
 
 function set_disp_box() {
-    if (moves_b.style.backgroundColor === "'#7CFF79'") {
-        disp_box.textContent = infoNmoves['moves'];
+    if (inflabel.textContent === "Moves") {
+        for (let i = 0; i < 10; i++) {
+            textlist.children[i].textContent = infoNmoves['moves'][i];
+        }
     } else {
-        disp_box.textContent = infoNmoves['info']
+        for (let i = 0; i < 10; i++) {
+            textlist.children[i].textContent = infoNmoves['info'][i];
+        }
     }
 }
 
 function parse_data(data) {
-    console.log(data["sprites"]['other']['official-artwork']['front_default']);
     image.src = data["sprites"]['other']['official-artwork']['front_default'];
     pname.textContent = data.name;
     infoNmoves['info'] = create_info(data.height, data.weight, data.stats);
@@ -98,24 +102,31 @@ function parse_data(data) {
 }
 
 function create_info(height, weight, stats) {
+    let info = []
     height *= .1;
     weight *= 1.0;
-    let info = "height:" + height.toFixed(1) + "m";
-    info += " weight:" + weight.toFixed(1) + "kg";
+    info.push("height: " + height.toFixed(1) + "m");
+    info.push("weight: " + weight.toFixed(1) + "kg");
     for (let i = 0; i < stats.length; i++) {
-        info += "\n" + stats[i].stat.name + ":" + stats[i].base_stat;
+        info.push(stats[i].stat.name + ": " + stats[i].base_stat);
+    }
+    for (let i = stats.length; i < 8; i++) {
+        info.push("");
     }
     return info;
 }
 
 function create_moves(moves) {
     let moveList = [];
-    let limit = 10;
+    let limit = 8;
     if (moves.length < limit) {
         limit = moves.length;
     }
     for (let i = 0; i < limit; i++) {
         moveList.push(moves[i].move.name);
+    }
+    for (let i = limit; i < 8; i++) {
+        moveList.push("");
     }
     return moveList;
 }
